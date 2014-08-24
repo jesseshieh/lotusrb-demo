@@ -1,7 +1,8 @@
-lotusrb-demo
-============
+## Demo of lotusrb
 
-Demo of lotusrb
+http://lotusrb.org/
+
+### Run
 
 ```bash
 lotus server
