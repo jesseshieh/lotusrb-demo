@@ -6,6 +6,7 @@ mapper = Lotus::Model::Mapper.new do
     entity Count
 
     attribute :id,    Integer
+    attribute :name,  String
     attribute :value, Integer
   end
 end

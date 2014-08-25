@@ -10,7 +10,7 @@ module OneFile
       load_paths << 'models'
 
       routes do
-        get '/', to: 'home#index'
+        get '/:name', to: 'home#index'
         post '/increment', to: 'home#increment'
       end
 

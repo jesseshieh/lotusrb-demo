@@ -8,7 +8,7 @@ module OneFile
       action 'Index' do
         expose :count
         def call(params)
-          @count = CountRepository.find_or_create(1)
+          @count = CountRepository.find_or_create(params[:name])
         end
       end
 
@@ -17,12 +17,12 @@ module OneFile
         handle_exception ArgumentError => 400
 
         def call(params)
-          id = params[:id] or raise ArgumentError, "id is missing"
+          name = params[:name] or raise ArgumentError, "name is missing"
           by = params[:by] or raise ArgumentError, "by is missing"
-          @count = CountRepository.find id.to_i
-          @count = @count.increment by.to_i
-          CountRepository.update(@count)
-          redirect_to '/'
+          count = CountRepository.find_by_name name
+          count = count.increment by.to_i
+          CountRepository.update(count)
+          redirect_to '/' + count.name
         end
       end
     end
